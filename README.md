@@ -22,10 +22,10 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
-        /* Navigation */
+        /* Mobile-first Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -33,113 +33,97 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            transition: all 0.3s ease;
+            padding: 10px 0;
         }
 
-        nav.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style: none;
+        .nav-container {
             display: flex;
-            justify-content: center;
-            padding: 1rem 0;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        nav ul li {
-            margin: 0 1.5rem;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
         }
 
-        nav ul li a {
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
             transition: color 0.3s ease;
-            position: relative;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
+        .nav-menu a:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
         }
 
-        nav ul li a:hover::after {
-            width: 100%;
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
         }
 
-        /* Hero Section */
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section - Mobile Optimized */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,0 1000,300 1000,1000 0,700"/></svg>');
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            padding: 80px 20px 40px;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
+            max-width: 600px;
             animation: fadeInUp 1s ease-out;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 4vw, 1.5rem);
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 30px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -147,9 +131,9 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Section Styles */
+        /* Section Styles - Mobile Optimized */
         .section {
-            padding: 80px 0;
+            padding: 60px 0;
             background: white;
         }
 
@@ -159,16 +143,17 @@
 
         .section h2 {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
             color: #333;
             position: relative;
+            padding-bottom: 15px;
         }
 
         .section h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 60px;
@@ -176,17 +161,12 @@
             background: linear-gradient(45deg, #667eea, #764ba2);
         }
 
-        /* About Section */
+        /* About Section - Mobile Optimized */
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
             align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
         }
 
         .profile-card {
@@ -196,36 +176,52 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 400px;
         }
 
         .profile-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .profile-avatar {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
             margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
+            overflow: hidden;
+            border: 4px solid;
+            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
         }
 
-        /* Skills Section */
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 800px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section - Mobile Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .skill-card {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -238,23 +234,26 @@
         }
 
         .skill-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        /* Projects Section */
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Projects Section - Mobile Optimized */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .project-card {
@@ -277,29 +276,40 @@
             text-align: center;
         }
 
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
         .project-content {
             padding: 1.5rem;
+        }
+
+        .project-content p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
         }
 
         .tech-tag {
             background: #e9ecef;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #495057;
         }
 
-        /* Experience Section */
+        /* Experience Section - Mobile Timeline */
         .experience-timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
+            margin-top: 2rem;
         }
 
         .experience-timeline::before {
@@ -337,6 +347,7 @@
             color: #667eea;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .experience-title {
@@ -348,21 +359,28 @@
         .experience-company {
             color: #666;
             margin-bottom: 1rem;
+            font-style: italic;
         }
 
-        /* Contact Section */
+        .experience-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section - Mobile Grid */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .contact-item {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
             transition: transform 0.3s ease;
         }
 
@@ -371,43 +389,154 @@
         }
 
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        /* Responsive Design */
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            font-size: 0.9rem;
+            color: #666;
+            word-break: break-all;
+        }
+
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
             }
 
-            .hero p {
-                font-size: 1.2rem;
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .nav-menu a {
+                padding: 10px 20px;
+                display: block;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero {
+                padding: 100px 20px 40px;
+            }
+
+            .section {
+                padding: 40px 0;
             }
 
             .about-content {
+                gap: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .projects-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
+                gap: 1.5rem;
             }
 
-            nav ul {
-                flex-wrap: wrap;
+            .experience-timeline {
+                padding-left: 1rem;
             }
 
-            nav ul li {
-                margin: 0.5rem;
+            .experience-item {
+                margin-left: 0.5rem;
+                padding: 1rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
             }
         }
 
-        /* Scroll animations */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 80px 15px 30px;
+            }
+
+            .section {
+                padding: 30px 0;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            .skill-card, .project-card, .contact-item {
+                padding: 1rem;
+            }
+
+            .experience-item {
+                padding: 1rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -419,50 +548,39 @@
             transform: translateY(0);
         }
 
-        /* Particles background */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float-particle 8s infinite linear;
-        }
-
-        @keyframes float-particle {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
+        /* Touch-friendly buttons */
+        @media (hover: none) {
+            .btn:hover {
+                transform: none;
             }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
+            
+            .skill-card:hover,
+            .project-card:hover,
+            .contact-item:hover,
+            .profile-card:hover {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-
-    <nav id="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Roopesh N</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
     <section id="home" class="hero">
@@ -478,7 +596,9 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="profile-card fade-in">
-                    <div class="profile-avatar">RN</div>
+                    <div class="profile-avatar">
+                        <img id="profileImage" src="" alt="Roopesh N" />
+                    </div>
                     <h3>Roopesh N</h3>
                     <p>Frontend Developer & Data Analyst</p>
                     <p>📍 Anekkal, Bengaluru 560106</p>
@@ -615,7 +735,7 @@
                     <p>Elected as VP of Cyber Sprint, leading cybersecurity and technology initiatives. Organized workshops, managed club activities, and mentored junior members in cybersecurity practices and technology trends.</p>
                 </div>
                 <div class="experience-item fade-in">
-                    <div class="experience-date">2023-2025</div>
+                    <div class="experience-date">2024-2025</div>
                     <div class="experience-title">UI/UX Designer Intern</div>
                     <div class="experience-company">BGR Technologies</div>
                     <p>Contributed to the development of Kreeda Bookings, a responsive web platform for booking sports venues. Designed user-centric, interactive mobile-first features and enhanced user engagement by 20%.</p>
@@ -647,36 +767,47 @@
                 <div class="contact-item fade-in">
                     <div class="contact-icon">📍</div>
                     <h3>Location</h3>
-                    <p>Anekal, Bengaluru 562106</p>
+                    <p>Anekal, Bengaluru 560106</p>
                 </div>
                 <div class="contact-item fade-in">
                     <div class="contact-icon">💼</div>
                     <h3>LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/roopesh-n-bba190254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"></a></p>
+                    <p>linkedin.com/in/roopesh-n-bba902547</p>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
         });
 
         // Fade in animation on scroll
@@ -697,55 +828,30 @@
             observer.observe(el);
         });
 
-        // Particle animation
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            document.getElementById('particles').appendChild(particle);
-
-            setTimeout(() => {
-                particle.remove();
-            }, 8000);
-        }
-
-        // Create particles periodically
-        setInterval(createParticle, 300);
-
-        // Create initial particles
-        for (let i = 0; i < 50; i++) {
-            setTimeout(createParticle, i * 100);
-        }
-
-        // Add typing effect to hero text
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
+        // Load profile image
+        async function loadProfileImage() {
+            try {
+                const imageData = await window.fs.readFile('image.png');
+                const blob = new Blob([imageData], { type: 'image/png' });
+                const imageUrl = URL.createObjectURL(blob);
+                document.getElementById('profileImage').src = imageUrl;
+            } catch (error) {
+                console.log('Image not found, using fallback');
+                // Fallback to initials if image can't be loaded
+                const profileAvatar = document.querySelector('.profile-avatar');
+                profileAvatar.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(45deg, #667eea, #764ba2); font-size: 2rem; color: white; font-weight: bold; border-radius: 50%;">RN</div>';
             }
-            type();
         }
 
-        // Initialize typing effect when page loads
+        // Initialize when page loads
         window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero h1');
-            const heroSubtitle = document.querySelector('.hero p');
-            
-            setTimeout(() => {
-                typeWriter(heroTitle, 'ROOPESH N', 150);
-            }, 500);
-            
-            setTimeout(() => {
-                typeWriter(heroSubtitle, 'Aspiring Frontend Developer | Data Analyst', 80);
-            }, 2000);
+            loadProfileImage();
         });
+
+        // Add touch event handling for better mobile interaction
+        if ('ontouchstart' in window) {
+            document.addEventListener('touchstart', function() {}, true);
+        }
     </script>
 </body>
 </html>
